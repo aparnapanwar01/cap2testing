@@ -8,26 +8,31 @@
     "node": "^16"
   },
   "dependencies": {
-    "@sap/cds": "^6.8",
-    "@sap/audit-logging": "^5",
-    "hdb": "^0.19",
-
     "@sap-cloud-sdk/http-client": "^2.5",
+    "@sap/audit-logging": "^5",
+    "@sap/cds": "^6.8",
     "@sap/xsenv": "^3",
     "@sap/xssec": "^3",
-    "passport": "^0.4.1",
-
     "debug": "^4.3",
-    "express": "^4"
+    "express": "^4",
+    "hdb": "^0.19",
+    "jest": "^29.7.0",
+    "passport": "^0.4.1"
   },
   "devDependencies": {
-    "@sap/ux-specification": "^1.96.4"
+    "@sap/ux-specification": "^1.96.4",
+    "chai": "^4.3.10",
+    "chai-as-promised": "^7.1.1",
+    "chai-subset": "^1.6.0",
+    "sqlite3": "^5.1.6"
   },
   "sapux": [
     "app/resources/fiori"
   ],
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "jest": "npx jest --silent",
+    "test": "npm run jest -- --silent"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -84,19 +89,18 @@
             }
           }
         }
-      }
-      ,
+      },
       "db": {
         "[production]": {
-          "kind": "hana-cloud"
-          ,"model": [
+          "kind": "hana-cloud",
+          "model": [
             "db/data-config",
             "db/data-test"
           ]
         },
         "[development]": {
-          "kind": "sql"
-          ,"model": [
+          "kind": "sql",
+          "model": [
             "db/data-config",
             "db/data-test"
           ]
@@ -105,8 +109,7 @@
           "db",
           "srv"
         ]
-      }
-      ,
+      },
       "API_SALES_ORDER_SRV": {
         "kind": "odata-v2",
         "model": "srv/external/API_SALES_ORDER_SRV",
