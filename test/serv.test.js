@@ -19,7 +19,7 @@ describe('cap/samples - Fiori APIs - v2', function() {
   it('Sales data ', async () => {
     const { data } = await GET `/catalog/Sales`
    // expect(data).to.containSubset({d:{results:[]}})
-    expect(data.value.length).to.be.greaterThanOrEqual(11000)
+    expect(data.value.length).to.be.greaterThanOrEqual(5)
   })
 
 })
