@@ -21,36 +21,36 @@ describe('cap/samples - Fiori APIs - v2', function() {
    // expect(data).to.containSubset({d:{results:[]}})
    // expect(data.amount).to.be.greaterThanOrEqual(100)
 
-   /* expect(data.value).to.containSubset([
+    expect(data.value).to.containSubset([
       {
 
         ID: 1,
-        amount: 323,
+        amount: 123,
         comments: null,
         country: "France",
-        criticality: null,
+        criticality: 1,
         org: "FR01",
         region: "Europe",
 
-      }])*/
+      }])
   })
 
   it('Sales data action testing ', async () => {
     const { data1 } = await POST `/catalog/Sales(1)/CatalogService.boost`
 
    const { data } = await GET `/catalog/Sales`
-  /*  expect(data.value).to.containSubset([
+    expect(data.value).to.containSubset([
       {
 
         ID: 1,
-        amount: 1573,
-        comments: null,
+        amount: 373,
+        comments: "Boosted!",
         country: "France",
-        criticality: null,
+        criticality: 2,
         org: "FR01",
         region: "Europe",
 
-      }])*/
+      }])
   })
 
 })
