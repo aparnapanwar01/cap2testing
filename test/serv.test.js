@@ -2,7 +2,7 @@ const cds = require('@sap/cds/lib')
 
 describe('cap/samples - Fiori APIs - v2', function() {
 
-  const { GET, expect, axios } = cds.test (__dirname+'/..')
+  const { GET, POST, expect, axios } = cds.test (__dirname+'/..')
   axios.defaults.auth = { username: 'joe', password: 'joe' }
 
   // if (this.timeout) this.timeout(1e6)
@@ -16,10 +16,41 @@ describe('cap/samples - Fiori APIs - v2', function() {
     //expect(data).to.contain('<EntitySet Name="GenreHierarchy" EntityType="CatalogService.GenreHierarchy"/>')
   })*/
 
-  it('Sales data ', async () => {
+  it('Sales data pull', async () => {
     const { data } = await GET `/catalog/Sales`
    // expect(data).to.containSubset({d:{results:[]}})
-    expect(data.value.length).to.be.greaterThanOrEqual(5)
+   // expect(data.amount).to.be.greaterThanOrEqual(100)
+
+    expect(data.value).to.containSubset([
+      {
+
+        ID: 1,
+        amount: 323,
+        comments: null,
+        country: "France",
+        criticality: null,
+        org: "FR01",
+        region: "Europe",
+
+      }])
+  })
+
+  it('Sales data action testing ', async () => {
+    const { data1 } = await POST `/catalog/Sales(1)/CatalogService.boost`
+
+   const { data } = await GET `/catalog/Sales`
+    expect(data.value).to.containSubset([
+      {
+
+        ID: 1,
+        amount: 1573,
+        comments: null,
+        country: "France",
+        criticality: null,
+        org: "FR01",
+        region: "Europe",
+
+      }])
   })
 
 })
