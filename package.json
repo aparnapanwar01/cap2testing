@@ -30,7 +30,7 @@
     "app/resources/fiori"
   ],
   "scripts": {
-    "start": "cds run",
+    "start": "cds-serve",
     "jest": "npx jest --silent",
     "test": "npm run jest -- --silent"
   },
