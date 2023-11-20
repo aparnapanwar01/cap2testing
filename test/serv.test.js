@@ -43,7 +43,7 @@ describe('cap/samples - Fiori APIs - v2', function() {
       {
 
         ID: 1,
-        amount: 12,
+        amount: 323,
         comments: "Boosted!",
         country: "France",
         criticality: 2,

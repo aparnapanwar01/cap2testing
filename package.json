@@ -99,7 +99,7 @@
           ]
         },
         "[development]": {
-          "kind": "sql",
+          "kind": "hana-cloud",
           "model": [
             "db/data-config",
             "db/data-test"
