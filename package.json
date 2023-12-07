@@ -10,7 +10,7 @@
   "dependencies": {
     "@sap-cloud-sdk/http-client": "^3.8",
     "@sap/audit-logging": "^5",
-    "@sap/cds": "^6.8",
+    "@sap/cds": "^7.4.1",
     "@sap/xsenv": "^3",
     "@sap/xssec": "^3",
     "debug": "^4.3",
@@ -32,7 +32,7 @@
   "scripts": {
     "start": "cds-serve",
     "jest": "npx jest --silent",
-    "test": "npm run jest -- --silent"
+    "test": "npm run jest -- --detectOpenHandles"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -69,7 +69,25 @@
           "strategy": "JWT"
         },
         "[development]": {
-          "strategy": "mock"
+          "strategy": "mock",
+          "users": {
+            "joe": {
+              "roles": [
+                "Admin",
+                "Viewer"
+              ]
+            },
+            "julie": {
+              "roles": [
+                "Viewer"
+              ]
+            },
+            "bob": {
+              "roles": [
+                "Viewer"
+              ]
+            }
+          }
         }
       },
       "db": {
@@ -82,16 +100,13 @@
           ]
         },
         "[development]": {
-          "kind": "hana",
+          "kind": "sql",
           "model": [
             "db/data-config",
             "db/data-test",
             "srv"
-          ],
-          "credentials": {
-           
-            "database":"hana"
-          }
+          ]
+
         },
         "model": [
           "db",

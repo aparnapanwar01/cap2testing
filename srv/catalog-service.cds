@@ -5,18 +5,6 @@ using {CV_SALES, CV_SESSION_INFO} from '../db/data-model';
 using { API_SALES_ORDER_SRV } from './external/API_SALES_ORDER_SRV.csn';
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 service CatalogService @(path : '/catalog')
 {
     entity Sales
