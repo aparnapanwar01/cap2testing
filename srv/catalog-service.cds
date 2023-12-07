@@ -18,21 +18,14 @@ using { API_SALES_ORDER_SRV } from './external/API_SALES_ORDER_SRV.csn';
 
 
 service CatalogService @(path : '/catalog')
-@(requires: 'authenticated-user')
 {
     entity Sales
-      @(restrict: [{ grant: ['READ'],
-                     to: 'Viewer'
-                   },
-                   { grant: ['WRITE'],
-                     to: 'Admin' 
-                   }
-                  ])
+
       as select * from db.Sales
       actions {
-        @(restrict: [{ to: 'Viewer' }])
+
         function largestOrder() returns String;
-        @(restrict: [{ to: 'Admin' }])
+
         action boost() returns Sales;
       }
     ;
