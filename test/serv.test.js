@@ -25,7 +25,7 @@ describe('cap/samples - Fiori APIs - v2', function() {
       {
 
         ID: 1,
-        amount: 1223,
+        amount: 13,
         comments: null,
         country: "France",
         criticality: 1,
